@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class CurrentLocationVC: UIViewController, CLLocationManagerDelegate {
+class CurrentLocationVC: UIViewController {
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -21,21 +21,37 @@ class CurrentLocationVC: UIViewController, CLLocationManagerDelegate {
     //MARK: View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        getLocation()
     }
     
     @IBAction func getLocation() {
         
         let authStatus = CLLocationManager.authorizationStatus()
         
-        if authStatus == .notDetermined {
+        switch authStatus {
+        case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
             return
+        case .restricted, .denied:
+            showLocationServicesDeniedAlert()
+            return
+        default:
+            print("Location")
         }
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
+    }
+    
+    func showLocationServicesDeniedAlert() {
+        let alert = UIAlertController(title: "Location Services Disabled",
+                                      message:
+            "Please enable location services for this app in Settings.",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default,
+                                     handler: nil)
+        present(alert, animated: true, completion: nil)
+        alert.addAction(okAction)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +65,7 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("didUpdateLocations \(newLocation)")
+        print("didUpdateLocations \(locations)")
     }
 }
 
