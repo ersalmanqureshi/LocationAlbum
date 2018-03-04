@@ -41,12 +41,10 @@ class CurrentLocationVC: UIViewController {
         case .restricted, .denied:
             showLocationServicesDeniedAlert()
             return
-        default:
-            print("Location")
+        case .authorizedAlways, .authorizedWhenInUse:
+            startLocationManager()
+            updateUI()
         }
-        
-        startLocationManager()
-        updateUI()
     }
     
     func startLocationManager() {
