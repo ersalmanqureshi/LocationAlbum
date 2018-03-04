@@ -18,9 +18,12 @@ class CurrentLocationVC: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    var location: CLLocation?
+    
     //MARK: View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateLabels()
     }
     
     @IBAction func getLocation() {
@@ -65,7 +68,23 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("didUpdateLocations \(locations)")
+        print("didUpdateLocations description \(locations)")
+        let newLocation = locations.last!
+        location = newLocation
+        print("didUpdateLocations newLocation \(newLocation)")
+        updateLabels()
+    }
+    
+    func updateLabels() {
+        if let location = location {
+            latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
+            longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
+            messageLabel.text = ""
+        } else {
+            latitudeLabel.text = ""
+            longitudeLabel.text = ""
+            messageLabel.text = "Tap, 'Get Location' to Start"
+        }
     }
 }
 
