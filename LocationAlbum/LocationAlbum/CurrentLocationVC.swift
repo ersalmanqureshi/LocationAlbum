@@ -20,10 +20,14 @@ class CurrentLocationVC: UIViewController {
     
     var location: CLLocation?
     
+    var updatingLocation = false
+    
+    var captureLastLocationError: Error?
+    
     //MARK: View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateLabels()
+        updateUI()
     }
     
     @IBAction func getLocation() {
@@ -56,26 +60,8 @@ class CurrentLocationVC: UIViewController {
         present(alert, animated: true, completion: nil)
         alert.addAction(okAction)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-}
-
-extension CurrentLocationVC: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("didFailWithError \(error)")
-    }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("didUpdateLocations description \(locations)")
-        let newLocation = locations.last!
-        location = newLocation
-        print("didUpdateLocations newLocation \(newLocation)")
-        updateLabels()
-    }
-    
-    func updateLabels() {
+    func updateUI() {
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
@@ -83,8 +69,66 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
         } else {
             latitudeLabel.text = ""
             longitudeLabel.text = ""
-            messageLabel.text = "Tap, 'Get Location' to Start"
+            
+            let statusMessage: String
+            
+            if let error = captureLastLocationError as? NSError {
+                if error.domain == kCLErrorDomain && error.code == CLError.denied.rawValue {
+                    statusMessage = "Location Services Disabled"
+                } else {
+                    statusMessage = "Error Getting location"
+                }
+            } else if !CLLocationManager.locationServicesEnabled() {
+                statusMessage = "Location Services Disabled"
+            } else if updatingLocation {
+                statusMessage = "Searching..."
+            }else {
+                statusMessage = "Tap, 'Get Location' to Start"
+            }
+            
+            messageLabel.text = statusMessage
         }
+    }
+    
+    func stopUpdatingLocationManager() {
+        if updatingLocation {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            updatingLocation = false
+        } }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+extension CurrentLocationVC: CLLocationManagerDelegate {
+    /*
+     Some of the possible Core Location errors:
+     • CLError.locationUnknown - The location is currently unknown, but Core Location will keep trying.
+     • CLError.denied - The user declined the app to use location services.
+     • CLError.network - There was a network-related error.
+     
+     */
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("didFailWithError \(error)")
+        
+        if (error as NSError).code == CLError.locationUnknown.rawValue {
+            return
+        }
+        
+        captureLastLocationError = error
+        
+        stopUpdatingLocationManager()
+        updateUI()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("didUpdateLocations description \(locations)")
+        let newLocation = locations.last!
+        location = newLocation
+        print("didUpdateLocations newLocation \(newLocation)")
+        updateUI()
     }
 }
 
