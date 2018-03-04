@@ -45,9 +45,24 @@ class CurrentLocationVC: UIViewController {
             print("Location")
         }
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.startUpdatingLocation()
+        startLocationManager()
+        updateUI()
+    }
+    
+    func startLocationManager() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func stopUpdatingLocationManager() {
+        if updatingLocation {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            updatingLocation = false
+        }
     }
     
     func showLocationServicesDeniedAlert() {
@@ -89,13 +104,6 @@ class CurrentLocationVC: UIViewController {
             messageLabel.text = statusMessage
         }
     }
-    
-    func stopUpdatingLocationManager() {
-        if updatingLocation {
-            locationManager.stopUpdatingLocation()
-            locationManager.delegate = nil
-            updatingLocation = false
-        } }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -128,6 +136,7 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
         let newLocation = locations.last!
         location = newLocation
         print("didUpdateLocations newLocation \(newLocation)")
+        captureLastLocationError = nil
         updateUI()
     }
 }
