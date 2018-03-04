@@ -85,7 +85,7 @@ class CurrentLocationVC: UIViewController {
             
             let statusMessage: String
             
-            if let error = captureLastLocationError as? NSError {
+            if let error = captureLastLocationError as NSError? {
                 if error.domain == kCLErrorDomain && error.code == CLError.denied.rawValue {
                     statusMessage = "Location Services Disabled"
                 } else {
@@ -132,10 +132,24 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("didUpdateLocations description \(locations)")
         let newLocation = locations.last!
-        location = newLocation
-        print("didUpdateLocations newLocation \(newLocation)")
-        captureLastLocationError = nil
-        updateUI()
+        
+        if newLocation.timestamp.timeIntervalSinceNow < -5 {
+            return
+        }
+        
+        if newLocation.horizontalAccuracy < 0 {
+            return
+        }
+        
+        if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
+            captureLastLocationError = nil
+            location = newLocation
+            updateUI()
+            
+            if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy{
+                print("done!")
+                stopLocationManager()
+            }
+        }
     }
 }
-
