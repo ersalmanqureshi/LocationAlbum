@@ -15,6 +15,7 @@ class CurrentLocationVC: UIViewController {
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var getLocationButton: UIButton!
     
     let locationManager = CLLocationManager()
     
@@ -28,6 +29,7 @@ class CurrentLocationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        configureGetButton()
     }
     
     @IBAction func getLocation() {
@@ -44,6 +46,7 @@ class CurrentLocationVC: UIViewController {
         case .authorizedAlways, .authorizedWhenInUse:
             startLocationManager()
             updateUI()
+            configureGetButton()
         }
     }
     
@@ -63,6 +66,14 @@ class CurrentLocationVC: UIViewController {
         }
     }
     
+    func configureGetButton() {
+        if updatingLocation {
+            getLocationButton.setTitle("Stop", for: .normal)
+        } else {
+            getLocationButton.setTitle("Get Location", for: .normal)
+        }
+    }
+    
     func showLocationServicesDeniedAlert() {
         let alert = UIAlertController(title: "Location Services Disabled",
                                       message:
@@ -78,10 +89,12 @@ class CurrentLocationVC: UIViewController {
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
+            addressLabel.text = ""
             messageLabel.text = ""
         } else {
             latitudeLabel.text = ""
             longitudeLabel.text = ""
+            addressLabel.text = ""
             
             let statusMessage: String
             
@@ -127,6 +140,7 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
         
         stopUpdatingLocationManager()
         updateUI()
+        configureGetButton()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -148,7 +162,8 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
             
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy{
                 print("done!")
-                stopLocationManager()
+                stopUpdatingLocationManager()
+                configureGetButton()
             }
         }
     }

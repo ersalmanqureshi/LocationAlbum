@@ -94,6 +94,7 @@
                     <tabBarItem key="tabBarItem" title="Location" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="addressLabel" destination="Qan-cZ-I2R" id="70x-8o-gZD"/>
+                        <outlet property="getLocationButton" destination="5Zo-S6-ipl" id="5PY-SU-IYk"/>
                         <outlet property="latitudeLabel" destination="GWs-1m-7ed" id="3Rc-zn-7PH"/>
                         <outlet property="longitudeLabel" destination="MuF-sd-o6X" id="TrT-rh-mKQ"/>
                         <outlet property="messageLabel" destination="KQZ-1w-vlD" id="fVs-LD-ynS"/>
