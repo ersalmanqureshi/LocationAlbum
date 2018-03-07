@@ -185,6 +185,16 @@ class CurrentLocationVC: UIViewController {
         
         return line1 + "\n" + line2
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editLocationSegue" {
+            let navVC = segue.destination as! UINavigationController
+            let destinationVC = navVC.topViewController as! EditLocationVC
+            destinationVC.coordinate = location!.coordinate
+            destinationVC.placemark = placemarks
+            
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -261,18 +261,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3q-WD-lJL">
-                                                    <rect key="frame" x="315" y="11" width="44" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3q-WD-lJL">
+                                                    <rect key="frame" x="261" y="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="A3q-WD-lJL" secondAttribute="trailing" constant="16" id="KuW-Ue-8Mc"/>
                                                 <constraint firstItem="ItT-hJ-bW0" firstAttribute="leading" secondItem="mXs-qq-KPe" secondAttribute="leading" constant="16" id="eoC-4D-WaE"/>
                                                 <constraint firstItem="ItT-hJ-bW0" firstAttribute="centerY" secondItem="mXs-qq-KPe" secondAttribute="centerY" id="iW8-xe-1BM"/>
-                                                <constraint firstItem="A3q-WD-lJL" firstAttribute="centerY" secondItem="mXs-qq-KPe" secondAttribute="centerY" id="z9n-iJ-ACN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -326,7 +325,7 @@
                         <outlet property="dateLabel" destination="8dS-Gs-fmp" id="Dp2-1b-pCr"/>
                         <outlet property="descriptionTextView" destination="hPI-qE-r3c" id="gFq-fN-1SF"/>
                         <outlet property="latitudeLabel" destination="JJZ-h1-wgh" id="OXH-Wf-hOe"/>
-                        <outlet property="longitudeLabel" destination="tf2-xg-wQw" id="wH8-PP-NzR"/>
+                        <outlet property="longitudeLabel" destination="Zww-Rn-ehg" id="1QS-BG-Bq1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sY-38-xrk" userLabel="First Responder" sceneMemberID="firstResponder"/>
