@@ -30,6 +30,8 @@ class CurrentLocationVC: UIViewController {
     let geocoder = CLGeocoder()
     var placemarks: CLPlacemark?
     
+    var timer: Timer?
+    
     //MARK: View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +72,8 @@ class CurrentLocationVC: UIViewController {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
+            
+            timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(didTimeOut), userInfo: nil, repeats: false)
         }
     }
     
@@ -78,6 +82,23 @@ class CurrentLocationVC: UIViewController {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
+            
+            if let timer = timer {
+                timer.invalidate()
+            }
+        }
+    }
+    
+    @objc func didTimeOut() {
+        print("== Time out")
+        
+        if location == nil {
+            stopUpdatingLocationManager()
+            
+            captureLastLocationError = NSError(domain: "MyLocationsErrorDomain", code: 1, userInfo: nil)
+            
+            updateUI()
+            configureGetButton()
         }
     }
     
@@ -204,6 +225,11 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
             return
         }
         
+        var distance = CLLocationDistance(Double.greatestFiniteMagnitude)
+        if let location = location {
+            distance = newLocation.distance(from: location)
+        }
+        
         if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
             captureLastLocationError = nil
             location = newLocation
@@ -213,6 +239,10 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
                 print("done!")
                 stopUpdatingLocationManager()
                 configureGetButton()
+                
+                if distance < 0 {
+                    performingReverseGeocoding = false
+                }
             }
             
             if !performingReverseGeocoding {
@@ -232,6 +262,15 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
                     self.updateUI()
                 })
             }
+        } else if distance < 1 {
+            
+            let timeStmp = newLocation.timestamp.timeIntervalSince(location!.timestamp)
+            if timeStmp > 10 {
+                stopUpdatingLocationManager()
+                updateUI()
+                configureGetButton()
+            }
+            
         }
     }
 }
