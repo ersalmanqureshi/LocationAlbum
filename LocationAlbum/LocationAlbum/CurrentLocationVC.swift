@@ -25,6 +25,11 @@ class CurrentLocationVC: UIViewController {
     
     var captureLastLocationError: Error?
     
+    var captureLastGeocodingError: Error?
+    var performingReverseGeocoding = false
+    let geocoder = CLGeocoder()
+    var placemarks: CLPlacemark?
+    
     //MARK: View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +49,15 @@ class CurrentLocationVC: UIViewController {
             showLocationServicesDeniedAlert()
             return
         case .authorizedAlways, .authorizedWhenInUse:
-            startLocationManager()
+            
+            if updatingLocation {
+                stopUpdatingLocationManager()
+            } else {
+                location = nil
+                captureLastLocationError = nil
+                startLocationManager()
+            }
+            
             updateUI()
             configureGetButton()
         }
@@ -164,6 +177,24 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
                 print("done!")
                 stopUpdatingLocationManager()
                 configureGetButton()
+            }
+            
+            if !performingReverseGeocoding {
+                print("===Geocode")
+                performingReverseGeocoding = true
+                geocoder.reverseGeocodeLocation(newLocation, completionHandler: { (placemark, error) in
+                    print("Place \(placemark), error \(error)")
+                    
+                    self.captureLastGeocodingError = error
+                    
+                    if error == nil, let p = placemark, !p.isEmpty {
+                        self.placemarks = p.last!
+                    } else {
+                        self.placemarks = nil
+                    }
+                    self.performingReverseGeocoding = false
+                    self.updateUI()
+                })
             }
         }
     }
