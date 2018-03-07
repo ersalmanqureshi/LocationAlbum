@@ -71,16 +71,25 @@
                                     <action selector="getLocation" destination="9pv-A4-QxB" eventType="touchUpInside" id="pqP-Nh-EZV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gt-Ln-30U">
+                                <rect key="frame" x="142.5" y="286" width="89" height="30"/>
+                                <state key="normal" title="Edit Location"/>
+                                <connections>
+                                    <segue destination="CUp-XF-ftU" kind="presentation" identifier="editLocationSegue" id="Ddc-ah-YNh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
+                            <constraint firstItem="3gt-Ln-30U" firstAttribute="top" secondItem="Qan-cZ-I2R" secondAttribute="bottom" constant="60" id="79K-Np-dJ7"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="GWs-1m-7ed" secondAttribute="trailing" constant="16" id="7EP-q6-sx7"/>
                             <constraint firstItem="MRq-XZ-dAX" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="DGc-y8-3sT"/>
                             <constraint firstItem="GWs-1m-7ed" firstAttribute="centerY" secondItem="MRq-XZ-dAX" secondAttribute="centerY" id="Dg0-pJ-l59"/>
                             <constraint firstItem="KQZ-1w-vlD" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="60" id="Guo-Qz-TYM"/>
                             <constraint firstItem="MuF-sd-o6X" firstAttribute="centerY" secondItem="a3x-8j-uAR" secondAttribute="centerY" id="IIK-u9-LZt"/>
                             <constraint firstItem="MuF-sd-o6X" firstAttribute="trailing" secondItem="GWs-1m-7ed" secondAttribute="trailing" id="MBv-6V-MCZ"/>
+                            <constraint firstItem="3gt-Ln-30U" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Vrf-ze-MK9"/>
                             <constraint firstItem="a3x-8j-uAR" firstAttribute="top" secondItem="MRq-XZ-dAX" secondAttribute="bottom" constant="12" id="bkv-gP-ZAT"/>
                             <constraint firstItem="MRq-XZ-dAX" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="24" id="jYS-U4-Jpe"/>
                             <constraint firstItem="Qan-cZ-I2R" firstAttribute="top" secondItem="a3x-8j-uAR" secondAttribute="bottom" constant="36" id="kTQ-KA-suW"/>
@@ -103,6 +112,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+        </scene>
+        <!--Edit Location-->
+        <scene sceneID="KLN-Qj-29w">
+            <objects>
+                <tableViewController id="QC8-mo-mc7" customClass="EditLocationVC" customModule="LocationAlbum" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="xtM-Vc-FLf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="RtI-uc-PMZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zj9-zW-Ggd">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zj9-zW-Ggd" id="f5Z-ai-rny">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="W7n-uh-dQD">
+                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W7n-uh-dQD" id="8N3-iX-oy9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0rt-6l-qZQ">
+                                        <rect key="frame" x="0.0" y="123" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0rt-6l-qZQ" id="hWR-TL-f8D">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="QC8-mo-mc7" id="M9g-KM-ndP"/>
+                            <outlet property="delegate" destination="QC8-mo-mc7" id="4uK-4I-dSS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edit Location" id="wiy-6s-SKq">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="imC-qu-E9Q">
+                            <connections>
+                                <action selector="cancel" destination="QC8-mo-mc7" id="jDc-UQ-Of9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="9vM-3x-a4m">
+                            <connections>
+                                <action selector="done" destination="QC8-mo-mc7" id="F1a-an-icr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9sY-38-xrk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2380" y="-322"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -158,6 +227,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IvH-zK-M9f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CUp-XF-ftU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rn1-u8-xea">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QC8-mo-mc7" kind="relationship" relationship="rootViewController" id="udl-54-DIv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0zb-Yq-u81" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1518" y="-322"/>
         </scene>
     </scenes>
     <resources>
