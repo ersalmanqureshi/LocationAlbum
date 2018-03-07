@@ -199,6 +199,7 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
      • CLError.network - There was a network-related error.
      
      */
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("didFailWithError \(error)")
         
@@ -213,6 +214,12 @@ extension CurrentLocationVC: CLLocationManagerDelegate {
         configureGetButton()
     }
     
+    /*
+     • finds a location with the desired accuracy,
+     • finds a location that is not as accurate as you’d like and you don’t get any more accurate readings,
+     • doesn’t find a location at all, or
+     • takes too long finding a location.
+     */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("didUpdateLocations description \(locations)")
         let newLocation = locations.last!
