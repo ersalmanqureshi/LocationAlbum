@@ -88,7 +88,11 @@ class EditLocationVC: UITableViewController {
         let hudView = HUD.hud(view: navigationController!.view, animated: true)
         hudView.text = "Posted"
         
-       // dismiss(animated: true, completion: nil)
+        let delayInSec = 0.6
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayInSec) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     @IBAction func cancel() {
         dismiss(animated: true, completion: nil)
