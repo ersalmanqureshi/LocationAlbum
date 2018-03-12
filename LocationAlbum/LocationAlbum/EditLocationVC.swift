@@ -84,7 +84,11 @@ class EditLocationVC: UITableViewController {
         return text }
     
     @IBAction func done() {
-        dismiss(animated: true, completion: nil)
+        
+        let hudView = HUD.hud(view: navigationController!.view, animated: true)
+        hudView.text = "Posted"
+        
+       // dismiss(animated: true, completion: nil)
     }
     @IBAction func cancel() {
         dismiss(animated: true, completion: nil)

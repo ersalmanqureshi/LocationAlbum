@@ -17,6 +17,7 @@
 		5C345A87204C7DE300DE78C6 /* LocationAlbumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C345A86204C7DE300DE78C6 /* LocationAlbumTests.swift */; };
 		5C345A92204C7DE300DE78C6 /* LocationAlbumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C345A91204C7DE300DE78C6 /* LocationAlbumUITests.swift */; };
 		5C4779712050865C00E15B75 /* EditLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4779702050865C00E15B75 /* EditLocationVC.swift */; };
+		5C7A18FB205714D0004FAAE7 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A18FA205714D0004FAAE7 /* HUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		5C345A91204C7DE300DE78C6 /* LocationAlbumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAlbumUITests.swift; sourceTree = "<group>"; };
 		5C345A93204C7DE300DE78C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C4779702050865C00E15B75 /* EditLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationVC.swift; sourceTree = "<group>"; };
+		5C7A18FA205714D0004FAAE7 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				5C345A7A204C7DE300DE78C6 /* LaunchScreen.storyboard */,
 				5C345A7D204C7DE300DE78C6 /* Info.plist */,
 				5C3430B72051DD92001B9B24 /* CategoryVC.swift */,
+				5C7A18FA205714D0004FAAE7 /* HUD.swift */,
 			);
 			path = LocationAlbum;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				5C3430B82051DD92001B9B24 /* CategoryVC.swift in Sources */,
 				5C345A74204C7DE300DE78C6 /* SecondViewController.swift in Sources */,
 				5C345A70204C7DE300DE78C6 /* AppDelegate.swift in Sources */,
+				5C7A18FB205714D0004FAAE7 /* HUD.swift in Sources */,
 				5C345A72204C7DE300DE78C6 /* CurrentLocationVC.swift in Sources */,
 				5C4779712050865C00E15B75 /* EditLocationVC.swift in Sources */,
 			);
