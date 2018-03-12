@@ -117,12 +117,12 @@
 				5C4779702050865C00E15B75 /* EditLocationVC.swift */,
 				5C345A71204C7DE300DE78C6 /* CurrentLocationVC.swift */,
 				5C345A73204C7DE300DE78C6 /* SecondViewController.swift */,
+				5C3430B72051DD92001B9B24 /* CategoryVC.swift */,
+				5C7A18FA205714D0004FAAE7 /* HUD.swift */,
 				5C345A75204C7DE300DE78C6 /* Main.storyboard */,
 				5C345A78204C7DE300DE78C6 /* Assets.xcassets */,
 				5C345A7A204C7DE300DE78C6 /* LaunchScreen.storyboard */,
 				5C345A7D204C7DE300DE78C6 /* Info.plist */,
-				5C3430B72051DD92001B9B24 /* CategoryVC.swift */,
-				5C7A18FA205714D0004FAAE7 /* HUD.swift */,
 				5C7A18FC20572B47004FAAE7 /* DataModel.xcdatamodeld */,
 			);
 			path = LocationAlbum;
