@@ -22,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let currentLocationViewController = tabBarViewControllers[0]
                 as! CurrentLocationVC
             currentLocationViewController.managedObjectContext = managedObjectContext
+            
+            let navigationController = tabBarViewControllers[1]
+                as! UINavigationController
+            let locationsVC = navigationController.viewControllers[0]
+                as! LocationsVC
+            locationsVC.managedObjectContext = managedObjectContext
         }
         
         listenForFatalCoreDataNotifications()
