@@ -34,6 +34,8 @@ class EditLocationVC: UITableViewController {
     
     var categoryName = "No Category"
     
+    var date = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +48,7 @@ class EditLocationVC: UITableViewController {
         } else {
             addressLabel.text = "No Address Found"
         }
-        dateLabel.text = format(date: Date())
+        dateLabel.text = format(date: date)
         
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -91,12 +93,26 @@ class EditLocationVC: UITableViewController {
         let hudView = HUD.hud(view: navigationController!.view, animated: true)
         hudView.text = "Posted"
         
-        let delayInSec = 0.6
+        let location = Location(context: managedObjectContext)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + delayInSec) {
-            self.dismiss(animated: true, completion: nil)
+        location.locationDescription = descriptionTextView.text
+        location.category = categoryName
+        location.latitude = coordinate.latitude
+        location.longitude = coordinate.longitude
+        location.date = date
+        location.placemark = placemark
+        
+        do {
+            try managedObjectContext.save()
+            afterDelay(0.6) {
+                 self.dismiss(animated: true, completion: nil)
+            }
+        } catch {
+            fatalCoreDataError(error)
+            //fatalError("Error: \(error)")
         }
     }
+    
     @IBAction func cancel() {
         dismiss(animated: true, completion: nil)
     }

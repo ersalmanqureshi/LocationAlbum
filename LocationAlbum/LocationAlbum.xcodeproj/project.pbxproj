@@ -21,6 +21,7 @@
 		5C7A18FE20572B47004FAAE7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A18FC20572B47004FAAE7 /* DataModel.xcdatamodeld */; };
 		5C7A190120572DBB004FAAE7 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A18FF20572DBB004FAAE7 /* Location+CoreDataClass.swift */; };
 		5C7A190220572DBB004FAAE7 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A190020572DBB004FAAE7 /* Location+CoreDataProperties.swift */; };
+		5C7A1904205812AD004FAAE7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A1903205812AD004FAAE7 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		5C7A18FD20572B47004FAAE7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		5C7A18FF20572DBB004FAAE7 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5C7A190020572DBB004FAAE7 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C7A1903205812AD004FAAE7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				5C345A7A204C7DE300DE78C6 /* LaunchScreen.storyboard */,
 				5C345A7D204C7DE300DE78C6 /* Info.plist */,
 				5C7A18FC20572B47004FAAE7 /* DataModel.xcdatamodeld */,
+				5C7A1903205812AD004FAAE7 /* Utilities.swift */,
 			);
 			path = LocationAlbum;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				5C7A190220572DBB004FAAE7 /* Location+CoreDataProperties.swift in Sources */,
 				5C7A18FB205714D0004FAAE7 /* HUD.swift in Sources */,
 				5C345A72204C7DE300DE78C6 /* CurrentLocationVC.swift in Sources */,
+				5C7A1904205812AD004FAAE7 /* Utilities.swift in Sources */,
 				5C4779712050865C00E15B75 /* EditLocationVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
