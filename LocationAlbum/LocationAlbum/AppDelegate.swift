@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let locationsVC = navigationController.viewControllers[0]
                 as! LocationsVC
             locationsVC.managedObjectContext = managedObjectContext
+            let _ = locationsVC.view
         }
         
         listenForFatalCoreDataNotifications()
