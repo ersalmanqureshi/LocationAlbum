@@ -111,9 +111,15 @@ class EditLocationVC: UITableViewController {
     @IBAction func done() {
         
         let hudView = HUD.hud(view: navigationController!.view, animated: true)
-        hudView.text = "Posted"
-        
-        let location = Location(context: managedObjectContext)
+
+        let location: Location
+        if let temp = locationToEdit {
+            hudView.text = "Updated"
+            location = temp
+        } else {
+            hudView.text = "Tagged"
+            location = Location(context: managedObjectContext)
+        }
         
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
@@ -129,7 +135,6 @@ class EditLocationVC: UITableViewController {
             }
         } catch {
             fatalCoreDataError(error)
-            //fatalError("Error: \(error)")
         }
     }
     

@@ -415,13 +415,13 @@
         <!--Locations-->
         <scene sceneID="6Fq-pg-nrL">
             <objects>
-                <tableViewController id="Qfb-4R-Tyw" customClass="LocationsVC" customModule="LocationAlbum" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Qfb-4R-Tyw" customClass="LocationsVC" customModule="LocationAlbum" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fNQ-3D-hir">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="luH-X3-lHK" customClass="LocationCell" customModule="LocationAlbum" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="luH-X3-lHK" customClass="LocationCell" customModule="LocationAlbum">
                                 <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="luH-X3-lHK" id="Q9q-rM-ZV7">
@@ -447,7 +447,7 @@
                                 <connections>
                                     <outlet property="addressLabel" destination="Zjv-3b-QBA" id="8wT-gk-a4L"/>
                                     <outlet property="descriptionLabel" destination="UJ8-HR-zl3" id="rNs-UW-00N"/>
-                                    <segue destination="CUp-XF-ftU" kind="presentation" identifier="EditLocation" trigger="accessoryAction" id="Nze-FL-eGj"/>
+                                    <segue destination="CUp-XF-ftU" kind="presentation" identifier="EditLocation" id="maR-70-Ggh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -484,6 +484,6 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nze-FL-eGj"/>
+        <segue reference="maR-70-Ggh"/>
     </inferredMetricsTieBreakers>
 </document>

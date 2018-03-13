@@ -60,14 +60,10 @@ class LocationsVC: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "EditLocation" {
-            let navigationController = segue.destination
-                as! UINavigationController
-            
-            let controller = navigationController.topViewController
-                as! EditLocationVC
-            
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController as! EditLocationVC
             controller.managedObjectContext = managedObjectContext
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
@@ -76,6 +72,4 @@ class LocationsVC: UITableViewController {
             }
         }
     }
-    
-
 }
