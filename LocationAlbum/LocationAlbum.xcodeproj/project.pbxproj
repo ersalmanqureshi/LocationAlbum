@@ -25,6 +25,7 @@
 		5C7A190620586661004FAAE7 /* LocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A190520586661004FAAE7 /* LocationsVC.swift */; };
 		5C7A1908205866FB004FAAE7 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A1907205866FB004FAAE7 /* LocationCell.swift */; };
 		5C7A1A65205B196A004FAAE7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7A1A64205B196A004FAAE7 /* MapKit.framework */; };
+		5C7A1A67205B1AB2004FAAE7 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A1A66205B1AB2004FAAE7 /* MapVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		5C7A190520586661004FAAE7 /* LocationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsVC.swift; sourceTree = "<group>"; };
 		5C7A1907205866FB004FAAE7 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		5C7A1A64205B196A004FAAE7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5C7A1A66205B1AB2004FAAE7 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				5C345A75204C7DE300DE78C6 /* Main.storyboard */,
 				5C345A73204C7DE300DE78C6 /* SecondViewController.swift */,
 				5C7A1903205812AD004FAAE7 /* Utilities.swift */,
+				5C7A1A66205B1AB2004FAAE7 /* MapVC.swift */,
 			);
 			path = LocationAlbum;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			files = (
 				5C3430B82051DD92001B9B24 /* CategoryVC.swift in Sources */,
 				5C345A74204C7DE300DE78C6 /* SecondViewController.swift in Sources */,
+				5C7A1A67205B1AB2004FAAE7 /* MapVC.swift in Sources */,
 				5C345A70204C7DE300DE78C6 /* AppDelegate.swift in Sources */,
 				5C7A18FE20572B47004FAAE7 /* DataModel.xcdatamodeld in Sources */,
 				5C7A190120572DBB004FAAE7 /* Location+CoreDataClass.swift in Sources */,
