@@ -166,7 +166,7 @@ class CurrentLocationVC: UIViewController {
     }
     
     func string(from placemark: CLPlacemark) -> String {
-       
+        
         var line1 = ""
         
         if let s = placemark.subThoroughfare {
