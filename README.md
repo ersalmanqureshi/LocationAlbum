@@ -4,6 +4,11 @@ It lets you keep a list of spots that you find interesting.
 
 
 
+## Requirements
+
+* Xcode 9
+* iOS 11+
+* Swift 4
 
 
 ## Author
